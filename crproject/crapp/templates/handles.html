@@ -1,0 +1,52 @@
+
+{% extends 'base.html' %}
+{% block title %}Kitchen Details {% endblock %}
+
+{% block style %}
+ <style>
+    
+    </style>
+{% endblock %}
+{% block body %}
+{% include 'navbar.html' %}
+
+
+  <div class="well">
+    <table  class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Photos</th>
+                <th>Quantity Selected</th>
+                <th>Total Price</th>
+                <th>Price</th>
+                <th>Click to Buy</th>
+                <th>Add to Cart</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for handle in handles %}
+                <tr>
+                    <td>{{handle.name}}</td>
+                    <td><img src="{{handle.photos}}"></td>
+                    <td>{{handle.quantity}}</td>
+                    <td>{{handle.totalprice}}</td>
+                    <td>{{handle.price}}</td>
+                    <td>
+                       <a href="/handles/{{handle.id}}/edit" 
+                            class="btn btn-xs btn-info" data-toggle="tooltip" title="Buy now">
+                            <i class="fas fa-edit"></i>
+                       </a>
+                    </td>
+                    <td>
+                       <a href="/cart/{{handle.id}}" class="btn btn-info btn-lg">
+                          <span class="glyphicon glyphicon-shopping-cart"></span> add to Cart
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+  
+{% endblock %}
